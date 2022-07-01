@@ -3,11 +3,6 @@ import Search from "./component/Search";
 import Card from "./component/Card"
 import axios from "axios";
 
-/* 
-const [movieID, setMovieID] = useState(0);
-setMovieID(157336); */
-
-
 const baseURL = 'https://api.themoviedb.org/3/';
 
 const App = function () {
@@ -16,15 +11,15 @@ const App = function () {
     const [movieData, setMovieData] = useState({});
 
     useEffect(() => {
-        console.log("HOLA INICIO APP")
         setMovieID(157336);
         getDataMoviID();
     }, []);
 
-
-    const getDataMoviID = async function (event) {
+    const getDataMoviID = async function (data) {
           const res = await axios.get(`${baseURL}movie/${movieID}?&api_key=cfe422613b250f702980a3bbf9e90716`);
 
+          console.log("getDataMoviID");
+          console.log(data);
         if (res.status === 200) {
             setMovieData(res.data)
         } else {
@@ -32,10 +27,9 @@ const App = function () {
         }
     }
   
-
     return (
         <div id="App">
-            <Search />
+            <Search fetchMovieID={getDataMoviID.bind(this)}/>
             <Card data={movieData}/>
         </div>
     );

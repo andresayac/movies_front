@@ -15,7 +15,6 @@ const Card = function (props) {
     (data.vote_average === 'undefined' || data.vote_average === 0) ? data.vote_average = '-' : data.vote_average = data.vote_average + ' / 10';
     (total_revenue === 'undefined' || total_revenue === 0) ? total_revenue = '-' : total_revenue = numeral(data.revenue).format('($0,0)');
 
-
     function  arrayDataToString(array) {
         let array_tmp = [];
         if (array !== undefined) {
