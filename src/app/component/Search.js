@@ -50,6 +50,7 @@ const Search = function (props) {
 									handleSearch(query);
 								}}
 								options={options}
+								placeholder ="Buscar..."
 							/>
 						</form>
 					</div>

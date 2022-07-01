@@ -1,14 +1,21 @@
 import React, { useState, useEffect } from "react";
 
+import Trailer from './Trailer';
+
 let numeral = require('numeral');
 
 const Card = function ({ data }) {
+
+	const [showYoutube, setShowYoutube] = React.useState(false)
+
+	console.log(data);
 	let poster_img = 'https://image.tmdb.org/t/p/w500' + data?.poster_path;
 	let total_revenue = data?.revenue;
 	let production_list = arrayDataToString(data?.production_companies);
 	let genresList = arrayDataToString(data?.genres);
-	let backdrop_img =
-		'https://image.tmdb.org/t/p/original' + data?.backdrop_path;
+	let backdrop_img = 'https://image.tmdb.org/t/p/original' + data?.backdrop_path;
+
+	let url_trailer = "https://www.youtube.com/embed/zbMA_Mwm1RY";
 
 	data?.vote_average === 'undefined' || data?.vote_average === 0
 		? (data.vote_average = '-')
@@ -68,12 +75,23 @@ const Card = function ({ data }) {
 								{data.vote_average}
 							</span>
 						</div>
+						<div className='col-xs-6'>
+						<i className="fa fa-youtube-play"></i>
+						<button className="btn btn-danger" onClick={() => setShowYoutube(!showYoutube)}>YouTube</button>
+						</div>
 					</div>
 				</div>
 			</div>
 			<div className='poster-container nopadding col-xs-12 col-md-4 pull-md-8 col-lg-5 pull-lg-7 '>
 				<img id='postertest' className='poster' src={poster_img} />
 			</div>
+			{ showYoutube && <div className='container'>
+				<div className="row justify-content-md-center">
+					<div className="embed-responsive col-xs-12  embed-responsive-16by9">
+						<Trailer data={url_trailer} />
+					</div>
+				</div>
+			</div>}
 		</div>
 	);
 };
