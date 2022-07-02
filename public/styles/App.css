@@ -5440,7 +5440,7 @@ body {
   );
   background-attachment: fixed;
   margin: 0;
-  height: 100vh;
+  height: auto;
 }
 #app {
   animation: fadein ease-out 1.4s;
