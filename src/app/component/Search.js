@@ -18,7 +18,6 @@ const Search = function (props) {
 	const handleSearch = async (query) => {
 		setIsLoading(true);
 		const results = await searchMovies(query);
-		console.log('results', results);
 		results && setOptions(results);
 		setIsLoading(false);
 	};
