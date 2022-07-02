@@ -9,9 +9,7 @@ const Search = function (props) {
 	const [options, setOptions] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
 	const [selected, setSelected] = useState();
-
-	console.log('selected', selected);
-
+	
 	const handleSearch = async (query) => {
 		setIsLoading(true);
 		const results = await searchMovies(query);
