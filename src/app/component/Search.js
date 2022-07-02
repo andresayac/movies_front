@@ -6,9 +6,6 @@ import Card from './Card';
 const AsyncTypeahead = withAsync(Typeahead);
 
 const Search = function (props) {
-	const TMDBLogo =
-		'https://skempin.github.io/reactjs-tmdb-app/images/tmdb.svg';
-
 	const [options, setOptions] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
 	const [selected, setSelected] = useState();
@@ -28,7 +25,7 @@ const Search = function (props) {
 					<div className='col-xs-12 col-sm-6 col-lg-5'>
 						<a href='./' title='ReactJS TMDb Movie Search'>
 							<img
-								src={TMDBLogo}
+								src="img/tmdb.svg"
 								className='logo'
 								alt='The Movie Database'
 							/>

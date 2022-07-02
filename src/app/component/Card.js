@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { getMovieData } from '../api/getMovieData';
 import Trailer from './Trailer';
 
@@ -7,7 +7,7 @@ let numeral = require('numeral');
 const Card = function ({ data }) {
 
 	const [showYoutube, setShowYoutube] = React.useState(false)
-	const [movieID, setmovieID] = React.useState(data.id)
+	const [movieID] = React.useState(data.id)
 	const [dataMovie, setdataMovie] = React.useState([])
 
 	let poster_img = 'https://image.tmdb.org/t/p/w500' + data.poster_path;
@@ -15,7 +15,7 @@ const Card = function ({ data }) {
 	let vote_average = '';
 	let production_list = arrayDataToString(dataMovie?.production_companies);
 	let genresList = arrayDataToString(dataMovie?.genres);
-	let backdrop_img = 'https://image.tmdb.org/t/p/original' + data.backdrop_path;
+	
 
 	dataMovie?.vote_average === 0 ? (vote_average = '-') : (vote_average = dataMovie.vote_average + ' / 10');
 	dataMovie?.revenue === 0 ? (total_revenue = '-') : (total_revenue = numeral(dataMovie.revenue).format('($0,0)'));
@@ -38,6 +38,7 @@ const Card = function ({ data }) {
 	}
 
 	useEffect(() => {
+		let backdrop_img = 'https://image.tmdb.org/t/p/original' + data.backdrop_path;
 		document.body.style.backgroundImage = 'url(' + backdrop_img + ')';
 		getData();
 	}, []);
